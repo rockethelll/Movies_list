@@ -1,5 +1,3 @@
-// http://www.omdbapi.com/?i=tt3896198&apikey=b17acb1d
-
 const result = document.getElementById('result')
 const form = document.querySelector('form')
 const input = document.querySelector('input')
@@ -33,7 +31,6 @@ const moviesDisplay = () => {
     readMoreBtn.forEach((button) => {
       button.addEventListener('click', () => {
         let imdbID = button.dataset.imdbid
-        console.log(imdbID + ' test')
         modalDisplay(imdbID)
       })
     })
@@ -53,21 +50,23 @@ const fetchModal = async (imdbID) => {
 
 const modalDisplay = async (imdbID) => {
   await fetchModal(imdbID).then(() => {
-    console.log(searchModal.Title + ' test')
-
-    return modal.innerHTML = `
-    <div class="modal-content">
+    return (modal.innerHTML = `
+    <div class="modal-wrapper">
       <span class="close">&times;</span>
-      <img src='${searchModal.Poster}'>
-      <p>${searchModal.Title}</p>
-      <p>${searchModal.Year}</p>
-      <p>${searchModal.Plot}</p>
+      <div class="modal-content">
+        <div class="modal-image">
+          <img src='${searchModal.Poster}'>
+        </div>
+        <div class="modal-text">
+          <h3>${searchModal.Title}</h3>
+          <p>${searchModal.Year}</p>
+          <p>${searchModal.Plot}</p>
+        </div>
+      </div>
     </div>
-    `
-      })
-      console.log(searchModal.Year + ' test2222')
-
-  const span = document.getElementsByClassName("close")[0]
+    `)
+  })
+  const span = document.getElementsByClassName('close')[0]
 
   modal.style.display = 'block'
   span.addEventListener('click', () => {
@@ -90,11 +89,6 @@ window.onclick = function (event) {
   }
 }
 
-window.onclick = function (event) {
-  if (event.target == modal) {
-    modal.style.display = 'none'
-  }
-}
 // let options = {
 //   rootMargin: '10% 0px',
 //   thresold: 0,
