@@ -1,16 +1,15 @@
-name : Default Environnement variables
-
+---
+name: Default Environnement variables
 on: push
-
 jobs:
-  default-env-variables:
+  test: null
   runs-on: ubuntu-latest
   steps:
-    -name: Testing Secret
+    - name: Testing
       run: |
         if [ "$DEVOPS" == "b17acb1d"]
         then
           echo "Our secret is found"
         fi
       env:
-        DEVOPS: ${{ secrets.SECRET_TOKEN }    
+        DEVOPS: ${{ secrets.SECRET_TOKEN }}
