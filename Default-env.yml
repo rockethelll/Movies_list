@@ -7,7 +7,7 @@ jobs:
   runs-on: ubuntu-latest
   steps:
     -name: Testing Secret
-      run: |
+      run: 
         if [ "$DEVOPS" == "b17acb1d"]
         then
           echo "Our secret is found"
