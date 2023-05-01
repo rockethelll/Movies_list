@@ -3,7 +3,7 @@ name : Default Environnement variables
 on: push
 
 jobs:
-  defaul-env-variables:
+  default-env-variables:
   runs-on: ubuntu-latest
   steps:
     -name: Testing Secret
